@@ -1,4 +1,4 @@
-package phase01.section02;
+package phase01.section03;
 
 /**
  * @author Created by sunjy on 2/17/25
@@ -15,6 +15,10 @@ public class Array<E> {
 
     public Array() {
         this(10);
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     public int getSize() {
@@ -56,6 +60,14 @@ public class Array<E> {
             throw new RuntimeException("Get failed. Index is illegal.");
         }
         return data[index];
+    }
+
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    public E getFirst() {
+        return get(0);
     }
 
     public void set(int index, E e) {
