@@ -1,18 +1,33 @@
 package phase01.section03;
 
 /**
- * @author Created by sunjy on 2/18/25
+ * @author Created by sunjy on 2/19/25
  */
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayQueue<E> implements Queue<E> {
 
     private Array<E> array;
 
-    public ArrayStack(int capacity) {
+    public ArrayQueue(int capacity) {
         array = new Array<>(capacity);
     }
 
-    public ArrayStack() {
+    public ArrayQueue() {
         array = new Array<>();
+    }
+
+    @Override
+    public void enqueue(E e) {
+        array.addLast(e);
+    }
+
+    @Override
+    public E dequeue() {
+        return array.removeFirst();
+    }
+
+    @Override
+    public E getFront() {
+        return array.getFirst();
     }
 
     @Override
@@ -25,21 +40,6 @@ public class ArrayStack<E> implements Stack<E> {
         return array.isEmpty();
     }
 
-    @Override
-    public void push(E e) {
-        array.addLast(e);
-    }
-
-    @Override
-    public E pop() {
-        return array.removeLast();
-    }
-
-    @Override
-    public E peek() {
-        return array.getLast();
-    }
-
     public int getCapacity() {
         return array.getCapacity();
     }
@@ -47,15 +47,15 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Stack: ");
-        stringBuilder.append("[");
+        stringBuilder.append("Queue: ");
+        stringBuilder.append("front [");
         for (int i = 0; i < array.getSize(); i++) {
             stringBuilder.append(array.get(i));
             if (i != array.getSize() - 1) {
                 stringBuilder.append(", ");
             }
         }
-        stringBuilder.append("] top");
+        stringBuilder.append("] tail");
         return stringBuilder.toString();
     }
 
